@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>
+            QR Code Generator
+        </title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body>
+        <div class="w-full h-screen px-40 py-20 bg-gradient-to-b from-blue-600 to-white">
+            <div class="w-full h-[550px] border rounded-3xl bg-white p-3"> <!--This is the white bezel-->
+
+                <div class="w-full h-full border rounded-2xl bg-blue-100 p-3 md:flex space-x-2"> <!--This is the blue background div-->
+
+                    <div class="w-[10%] h-full rounded-xl flex-col space-y-6 p-2"> <!--This is the div for navigation of different qr code makers-->
+
+                        <div class="w-full h-[13%] border-2 border-white bg-white rounded-full "> <!--This is the div for adding image-->
+                            <img src="static/img/my-image.jpeg" alt="my image" class="rounded-full">
+                        </div>
+
+                        <div class="w-full h-[80%] border-2 border-white bg-white rounded-full flex-col space-y-5 p-2 pt-5">
+                            <div class="w-10 h-10 rounded-full bg-blue-600"></div>
+                            <div class="w-10 h-10 rounded-full bg-blue-600"></div>
+                            <div class="w-10 h-10 rounded-full bg-blue-600"></div>
+                            <div class="w-10 h-10 rounded-full bg-blue-600"></div>
+                            <div class="w-10 h-10 rounded-full bg-blue-600"></div>
+                            <div class="w-10 h-10 rounded-full bg-blue-600"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="w-[50%] h-full rounded-xl"><!--This is the div where there is the text field for adding links and text-->
+                        <div class="py-28 px-4 flex-col space-y-10">
+                            <p class="text-5xl font-semibold font-sans text-blue-700">Enter your text</p>
+
+                            <div class="flex space-x-2 p-2">
+                                <input type="text" class="bg-white w-[80%] border-white border-2 p-2 rounded-xl">
+                                <button class="w-[20%] bg-blue-600 text-white text-2xl font-mono font-bold rounded-xl ring">-></button>
+                            </div>
+
+                            <div></div>
+                        </div>
+                    </div> 
+
+                    <div class="w-[40%] h-full border-2 border-blue-800 bg-blue-800 rounded-xl space-y-5 flex-col p-4"> <!--This is the div where the qr code is displayex-->
+                        <div class="w-full h-56 p-4 flex justify-center"> <!--This div stores the qr code-->
+                            <div class="w-52 h-52 border-2 border-white rounded-xl">
+                                <img src="static/img/qrcode.png" alt="qr code" class="rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="w-full h-32 px-3">
+                            <div class="w-full h-full bg-white/30 rounded-xl flex-col p-2">
+                                <p class="text-white font-semibold">Background color</p>
+
+                                <div class="flex justify-between py-6 px-2">
+                                    <button type="button" class="w-10 h-10 border border-white bg-yellow-500 rounded-xl"></button>
+                                    <button type="button" class="w-10 h-10 border border-white bg-blue-500 rounded-xl"></button>
+                                    <button type="button" class="w-10 h-10 border border-white bg-green-500 rounded-xl"></button>
+                                    <button type="button" class="w-10 h-10 border border-white bg-black rounded-xl"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full h-16 flex justify-between px-4 py-1">
+                            <button type="button" class="text-white text-xl font-mono font-bold px-10 rounded-3xl bg-yellow-500">JPG</button>
+                            <button type="button" class="text-white text-xl font-mono font-bold px-10 rounded-3xl bg-sky-400">PNG</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
