@@ -34,8 +34,8 @@
                             <p class="text-5xl font-semibold font-sans text-blue-700">Enter your text</p>
 
                             <div class="flex space-x-5 p-2">
-                                <input type="text" class="bg-white w-[80%] border-white border-2 p-2 rounded-xl">
-                                <button class="w-[20%] bg-blue-600 text-white text-2xl font-mono font-bold rounded-xl ring">-></button>
+                                <input type="text" class="bg-white w-[80%] border-white border-2 p-2 rounded-xl" id="text-input">
+                                <button class="w-[20%] bg-blue-600 text-white text-2xl font-mono font-bold rounded-xl ring" id="generate-button">-></button>
                             </div>
 
                             <div></div>
@@ -44,7 +44,7 @@
 
                     <div class="w-[40%] h-full border-2 border-blue-800 bg-blue-800 rounded-xl space-y-5 flex-col p-4"> <!--This is the div where the qr code is displayex-->
                         <div class="w-full h-56 p-4 flex justify-center"> <!--This div stores the qr code-->
-                            <div class="w-52 h-52 rounded-xl">
+                            <div class="w-52 h-52 rounded-xl bg-white flex justify-center p-4" id="qrcode"> <!--This is the div that gets updated with the new qr code image!!-->
                                 <img src="static/img/qrcode.png" alt="qr code" class="rounded-xl border-2 border-white">
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <p class="text-white font-semibold">Background color</p>
 
                                 <div class="flex justify-between py-6 px-2">
-                                    <button type="button" class="w-10 h-10 border border-white bg-yellow-500 rounded-xl"></button>
+                                    <button type="button" class="w-10 h-10 border border-white bg-yellow-500 rounded-xl" onclick="document.getElementById('qrcode').class = 'bg-yellow-500'"></button>
                                     <button type="button" class="w-10 h-10 border border-white bg-blue-500 rounded-xl"></button>
                                     <button type="button" class="w-10 h-10 border border-white bg-green-500 rounded-xl"></button>
                                     <button type="button" class="w-10 h-10 border border-white bg-black rounded-xl"></button>
@@ -63,12 +63,68 @@
                         </div>
 
                         <div class="w-full h-16 flex justify-between px-4 py-1">
-                            <button type="button" class="text-white text-xl font-mono font-bold px-10 rounded-3xl bg-yellow-500">JPG</button>
-                            <button type="button" class="text-white text-xl font-mono font-bold px-10 rounded-3xl bg-sky-400">PNG</button>
+                            <!-- <button type="button" class="text-white text-xl font-mono font-bold px-8 rounded-3xl bg-yellow-500">&#x2193; JPG</button> -->
+                            <button type="button" class="text-white text-xl w-full font-mono font-bold px-6 py-3 rounded-3xl bg-sky-400 flex justify-center" id="png-download-button">
+                                <img src="static/img/download-svgrepo-com.svg" alt="download image" class="text-white w-6 mx-1 fill-white"> PNG</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <script src="qrcode.min.js"></script>
+
+        <script>
+            // Get references to the input field, button, and QR code div
+            const inputField = document.getElementById('text-input');
+            const generateButton = document.getElementById('generate-button');
+            const qrCodeDiv = document.getElementById('qrcode');
+
+            // Add click event listener to the generate button
+            generateButton.addEventListener('click', generateQRCode);
+
+            // Function to generate the QR code
+            function generateQRCode() {
+            // Get the text value from the input field
+            const text = inputField.value;
+
+            // Clear the previous QR code, if any
+            qrCodeDiv.innerHTML = '';
+
+            // Create the QR code using qrcode.js
+            const qrCode = new QRCode(qrCodeDiv, {
+                text: text,
+                width: 300,
+                height: 300,
+            });
+
+            }
+
+            const pngDownloadButton = document.getElementById('png-download-button');
+            pngDownloadButton.addEventListener('click', downloadQRCodePNG);
+
+            function downloadQRCodePNG() {
+            const text = inputField.value;
+            qrCodeDiv.innerHTML = '';
+            const qrCode = new QRCode(qrCodeDiv, {
+                text: text,
+                width: 300,
+                height: 300,
+            });
+
+            const canvas = document.createElement('canvas');
+            canvas.width = qrCodeDiv.offsetWidth;
+            canvas.height = qrCodeDiv.offsetHeight;
+            const context = canvas.getContext('2d');
+            qrCode.drawToCanvas(0, 0, canvas.width, canvas.height);
+            const dataURL = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'qrcode.png';
+            link.click();
+            }
+
+            // qrcode.make("hello");
+        </script>
     </body>
 </html>
