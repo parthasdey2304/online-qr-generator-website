@@ -44,7 +44,7 @@
 
                     <div class="w-[40%] h-full border-2 border-blue-800 bg-blue-800 rounded-xl space-y-5 flex-col p-4"> <!--This is the div where the qr code is displayex-->
                         <div class="w-full h-56 p-4 flex justify-center"> <!--This div stores the qr code-->
-                            <div class="w-52 h-52 rounded-xl bg-white flex justify-center p-4" id="qrcode"> <!--This is the div that gets updated with the new qr code image!!-->
+                            <div class="w-52 h-52 rounded-xl flex justify-center p-4" id="qrcode" style="background-color: white;"> <!--This is the div that gets updated with the new qr code image!!-->
                                 <img src="static/img/qrcode.png" alt="qr code" class="rounded-xl border-2 border-white">
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <p class="text-white font-semibold">Background color</p>
 
                                 <div class="flex justify-between py-6 px-2">
-                                    <button type="button" class="w-10 h-10 border border-white bg-yellow-500 rounded-xl" onclick="document.getElementById('qrcode').class = 'bg-yellow-500'"></button>
+                                    <button type="button" class="w-10 h-10 border border-white bg-yellow-500 rounded-xl" onclick="document.getElementById('qrcode').style.background = 'bg-yellow-500'"></button>
                                     <button type="button" class="w-10 h-10 border border-white bg-blue-500 rounded-xl"></button>
                                     <button type="button" class="w-10 h-10 border border-white bg-green-500 rounded-xl"></button>
                                     <button type="button" class="w-10 h-10 border border-white bg-black rounded-xl"></button>
